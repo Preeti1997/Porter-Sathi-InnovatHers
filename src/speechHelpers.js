@@ -1,5 +1,5 @@
 // src/speechHelpers.js
-export function speak(text, lang = "hi-IN") {
+export function speak(text, lang = "en-IN") {
   const utter = new SpeechSynthesisUtterance(text);
   utter.lang = lang;
   const voices = speechSynthesis.getVoices();

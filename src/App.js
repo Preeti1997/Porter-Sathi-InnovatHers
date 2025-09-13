@@ -6,12 +6,15 @@ import VoiceInput from './components/VoiceInput';
 import Conversation from './components/Conversation';
 import Tabs from './components/Tabs';
 import { getAIResponse } from './utils/aiResponse';
+import EmergencyFlow from "./components/EmergencyFlow";
+import EarningsCard from './components/EarningsCard';
 
 const App = () => {
   const [history, setHistory] = useState([]);
   const [activeTab, setActiveTab] = useState('business');
   const voicesRef = useRef([]);
   const [selectedLang, setSelectedLang] = useState('hi-IN');
+  const [earnings, setEarnings] = useState(null);
   const [messages, setMessages] = useState([
     { role: 'assistant', text: 'Namaste! Main aapka Porter Saathi hoon. Aapki kya madad kar sakta hoon?' }
   ]);
@@ -102,29 +105,12 @@ const App = () => {
       <div className="mt-4 flex justify-center">
         <VoiceInput onResult={handleUserQuery} isListening={isListening} setIsListening={setIsListening} />
       </div>
+      <div className="mt-6 w-full max-w-md">
+        <EarningsCard data={earnings} />
+        <EmergencyFlow /> 
+      </div>
     </div>
   );
 };
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
